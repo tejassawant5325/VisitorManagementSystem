@@ -1,0 +1,38 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+*{
+    font-family: 'Poppins', sans-serif;
+}
+.icon-color{
+    color: green;
+    
+}
+
+.user-img{
+    height: 100px;
+    width: 100px;
+    border-radius: 50%;
+}
+.qr-image{
+    height: 100px;
+    width: 100px;
+}
+
+.position {
+    position: relative;
+}
+
+#view {
+    position: absolute;
+    border-radius: 5px;
+    right: 0px;
+    z-index: 2;
+    border: none;
+    top: 50%;
+    right:1%;
+    height: 30px;
+    cursor: pointer;
+    color: white;
+    background-color: #1e90ff;
+    transform: translateX(2px);
+}
