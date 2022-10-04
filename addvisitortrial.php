@@ -38,10 +38,15 @@ function validatemobile($mobile)
 <?php
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Visitor Details
+    $vmobile = $_POST['vmobile'];
+    $sql = "SELECT * FROM `info_visitor` WHERE `Contact` = $vmobile";
+    $match = mysqli_query($link, $sql);
+    $count = mysqli_num_rows($match);
+    if(!$count>=1){
+
     $fname = $_POST['fname'];
     $mname = $_POST['mname'];
     $lname = $_POST['lname'];
-    $vmobile = $_POST['vmobile'];
     $work = $_POST['work'];
     $agentname = $_POST['agentname'];
     $agentno = $_POST['agentno'];
@@ -79,7 +84,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $filetmp = $file['tmp_name'];
 
     $fileext = explode('.', $filename ?? '');
-    // $fileext = explode('.', $filename);
     $filecheck = strtolower(end($fileext));
 
     $fileextstored = array('png', 'jpg', 'jpeg');
@@ -88,14 +92,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         move_uploaded_file($filetmp, $destinationfile);
 
     }
-       // ---------------------------
+       // ----------------------------------------******-----------------------------------
        $idfile = $_FILES['idcarddoc'];
        $idfilename = $idfile['name']; 
        $idfileerror = $idfile['error'];
        $idfiletmp = $idfile['tmp_name'];
    
        $idfileext = explode('.', $idfilename ?? '');
-    //    $idfileext = explode('.', $idfilename);
        $idfilecheck = strtolower(end($idfileext));
    
        $idfileextstored = array('png', 'jpg', 'jpeg','pdf');
@@ -104,14 +107,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
            move_uploaded_file($idfiletmp, $iddestinationfile);
    
        }
-       // ----------------------------------------
+       // ----------------------------------------******-----------------------------------
        $aggfile = $_FILES['agreement'];
        $aggfilename = $aggfile['name'];
        $aggfileerror = $aggfile['error'];
        $aggfiletmp = $aggfile['tmp_name'];
    
        $aggfileext = explode('.', $aggfilename ?? '');
-    //    $aggfileext = explode('.', $aggfilename);
        $aggfilecheck = strtolower(end($aggfileext));
    
        $aggfileextstored = array('png', 'jpg', 'jpeg','pdf');
@@ -138,6 +140,11 @@ Comment,registeredBy,dob,age,user_image,user_id_card,user_agreement) VALUES ('$p
 
     }
 }
+else{
+    $userExist = true;
+}
+}
+
 ?>
 
 
@@ -203,6 +210,11 @@ if ($showmsg) {
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>';
 }
+if($userExist)
+    echo '<div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <strong>Alert </strong> User Already Exist.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>';
 ?>
     <div class="container">
         <h4 class="text-center mt-3">Application Form for Visitor Id</h4>
@@ -211,8 +223,8 @@ if ($showmsg) {
             <h5 class="text-center">Section A : Vistitor's Employer Details</h5>
             <div class="mb-3">
                 <label for="Owner" class="form-label">Employer Name</label>
-                <input type="text" name="ownername" class="form-control" id="ownername" placeholder="Enter Employer Name"
-                    required>
+                <input type="text" name="ownername" class="form-control" id="ownername"
+                    placeholder="Enter Employer Name" required>
             </div>
             <div class="mb-3">
                 <label for="Owner Mobile Number" class="form-label">Employer Mobile Number</label>
@@ -245,7 +257,8 @@ if ($showmsg) {
             </div>
             <div class="mb-3">
                 <label for="Mobile" class="form-label">Mobile Number</label>
-                <input type="number" name="vmobile" class="form-control" id="mobile" pattern="\d*" maxlength="10" minlength="10" placeholder="Enter Mobile Number"required>
+                <input type="number" name="vmobile" class="form-control" id="mobile" pattern="\d*" maxlength="10"
+                    minlength="10" placeholder="Enter Mobile Number" required>
             </div>
             <div class="mb-3">
                 <label for="Nationality" class="form-label">Nationality</label>
@@ -289,8 +302,7 @@ if ($showmsg) {
             </div>
             <div class="mb-3">
                 <label for="Visitor Religion" class="form-label">Visitor Age</label>
-                <input type="number" name="age" class="form-control" id="age"
-                    placeholder="Enter Visitor Age" required>
+                <input type="number" name="age" class="form-control" id="age" placeholder="Enter Visitor Age" required>
             </div>
             <div class="mb-3">
                 <label for="Nearest Police Station" class="form-label">Nearest Police Station</label>
@@ -325,13 +337,13 @@ if ($showmsg) {
             </div>
             <div class="mb-3">
                 <label for="Agent Mobile Number" class="form-label">Agent Mobile Number</label>
-                <input type="number" name="agentno" class="form-control" id="anumber" pattern="\d*" maxlength="10" minlength="10"
-                    placeholder="Enter Agent Mobile Number" required>
+                <input type="number" name="agentno" class="form-control" id="anumber" pattern="\d*" maxlength="10"
+                    minlength="10" placeholder="Enter Agent Mobile Number" required>
             </div>
             <hr>
-             <!-- ---------------------------------------*************************------------------------------- -->
-             <h5 class="text-center">Section D : Other Vistors Details</h5>
-             <div class="mb-3">
+            <!-- ---------------------------------------*************************------------------------------- -->
+            <h5 class="text-center">Section D : Other Vistors Details</h5>
+            <div class="mb-3">
                 <label for="agreement" class="form-label">Agreement</label>
                 <input type="file" name="agreement" class="form-control" id="agreement">
             </div>
