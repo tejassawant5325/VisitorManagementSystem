@@ -282,11 +282,11 @@ function headingMake($res)
         if ($result['Status'] == 1) {
             echo '<td><a href="userstatus.php?id=' . $result['Serial'] . '&status=0" type="button" class="btn btn-success btn-sm name="status">Accepted</a></td>';
 
-            $status_info = true;
+          
         } else {
-            echo '<td><a href="userstatus.php?id=' . $result['Serial'] . '&status=1" type="button" class="btn btn-warning btn-sm name="status">Pending</a></td>';
+            echo '<td><button "type="button" class="btn btn-warning btn-sm name="status">Pending</button></td>';
 
-            $status_info = false;
+            
         }
 
         if ($result['Status'] == 1) {
