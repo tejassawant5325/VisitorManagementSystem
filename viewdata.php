@@ -148,6 +148,7 @@ function disable() {
                     <th scope="col">Photo</th>
                     <th scope="col">Agreement</th>
                     <th scope="col">Id Card</th>
+                    <th scope="col">Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -306,6 +307,7 @@ function headingMake($res)
         echo '<td><a class="btn btn-info btn-sm" href="'.$result['user_image'].'" target="_blank">View</a></td>';
         echo '<td><a class="btn btn-info btn-sm" href="'.$result['user_agreement'].'" target="_blank">View</a></td>';
         echo '<td><a class="btn btn-info btn-sm" href="'.$result['user_id_card'].'" target="_blank">View</a></td>';
+        echo '<td><a href="edituser.php?id=' . $result['Serial'] . '" type="button" class="btn btn-primary btn-sm">Edit</a></td>';
         echo '</tr>';
     }
 }

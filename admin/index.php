@@ -22,10 +22,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         while ($row = mysqli_fetch_assoc($result)) {
             if (password_verify($password, $row['pass'])) {
                 $_SESSION["admin"] = $_POST["username"];
-                $_SESSION["adminlogin"] = 1;
+                // $_SESSION["adminlogin"] = 1;
                 echo "<script LANGUAGE='JavaScript'>
                             window.alert('Logged in Successfully');
-                            window.location.href='dashboard.php';
+                            window.location.href='verifyotp.php';
                             </script>";
             }
         }

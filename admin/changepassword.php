@@ -128,7 +128,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <label for="password" class="form-label">New Password</label>
                 <input type="password" name="password" class="form-control" id="password"
                     placeholder="Enter New Password" required />
-                <button type="button" class="btn btn-info btn-sm" id="view" onclick="viewPassword();">View</button>
+                <button type="button" class="btn btn-info btn-sm" id="view" onmousedown="viewPassword()" onmouseup="viewPassword()" onmouseleave="viewPassword()";>View</button>
             </div>
             <button type="submit" name="submit" class="btn btn-primary">
                 Submit
