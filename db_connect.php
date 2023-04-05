@@ -3,7 +3,7 @@
 $server = "localhost";
 $user = "root";
 $pass = "";
-$dbName = "db_vms";
+$dbName = "vms";
 
 $link = mysqli_connect($server, $user, $pass, $dbName);
 

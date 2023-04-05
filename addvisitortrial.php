@@ -39,10 +39,10 @@ function validatemobile($mobile)
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 // Visitor Details
     $vmobile = $_POST['vmobile'];
-    $sql = "SELECT * FROM `info_visitor` WHERE `Contact` = $vmobile";
-    $match = mysqli_query($link, $sql);
-    $count = mysqli_num_rows($match);
-    if(!$count>=1){
+    // $sql = "SELECT * FROM `info_visitor` WHERE `Contact` = $vmobile";
+    // $match = mysqli_query($link, $sql);
+    // $count = mysqli_num_rows($match);
+    // if(!$count>=1){
 
     $fname = $_POST['fname'];
     $mname = $_POST['mname'];
@@ -139,10 +139,10 @@ Comment,registeredBy,dob,age,user_image,user_id_card,user_agreement) VALUES ('$p
         $showmsg = false;
 
     }
-}
-else{
-    $userExist = true;
-}
+// }
+// else{
+//     $userExist = true;
+// }
 }
 
 ?>
